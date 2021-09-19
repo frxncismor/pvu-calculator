@@ -1,0 +1,221 @@
+<form action="">
+  <div class="wrapper">
+    <div class="input">
+      <label for="le">LE</label>
+      <input id="le" type="number" name="plant.le" [(ngModel)]="plant.le" />
+    </div>
+    <p>/</p>
+    <div class="input">
+      <label for="hour">Hours</label>
+      <input
+        id="hour"
+        type="number"
+        name="plant.hours"
+        [(ngModel)]="plant.hours"
+      />
+    </div>
+  </div>
+  <button
+    class="btn btn-primary"
+    type="submit"
+    (click)="getLePerHour(plant.le, plant.hours)"
+  >
+    Get LE per hour
+  </button>
+</form>
+
+<div class="le-section" *ngIf="lePerHour > 0">
+  <h1>LE</h1>
+  <div class="le-cards">
+    <div class="card">
+      <figure>
+        <img
+          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjkiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAyOSAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI3LjEyNzkgMTIuNzM3NUwyNy4xMjc4IDEyLjczNzRDMjYuOTIzNSAxMi4yNDQxIDI2LjQ0MiAxMS45MjI0IDI1LjkwODEgMTEuOTIyNEgxNy43ODE5TDE5LjMwNTIgMi4wMjExMUwxOS4zMDUyIDIuMDIxMDlDMTkuMzkyIDEuNDU2ODEgMTkuMTA2MiAwLjkwMDcwNSAxOC41OTcxIDAuNjQyNjMzTDE4LjM3MSAxLjA4ODYyTDE4LjU5NzEgMC42NDI2MzNDMTguMDg3NiAwLjM4NDQzNiAxNy40NzAyIDAuNDgzMTY2IDE3LjA2NjYgMC44ODY3NzJMMi4xMjk2NSAxNS44MjM3TDIuNDgzMjEgMTYuMTc3MkwyLjEyOTY1IDE1LjgyMzdDMS43NTIwMyAxNi4yMDEzIDEuNjM5MTMgMTYuNzY5MiAxLjg0MzQgMTcuMjYyNUwxLjg0MzQzIDE3LjI2MjZDMi4wNDc4IDE3Ljc1NTkgMi41MjkyMyAxOC4wNzc2IDMuMDYzMjIgMTguMDc3NkgxMS4xODkzTDkuNjY2MDUgMjcuOTc4OUw5LjY2NjA1IDI3Ljk3ODlDOS41NzkyNiAyOC41NDMyIDkuODY0OTcgMjkuMDk5MyAxMC4zNzQyIDI5LjM1NzRDMTAuODgzNiAyOS42MTU2IDExLjUwMSAyOS41MTY4IDExLjkwNDYgMjkuMTEzMkwyNi44NDE2IDE0LjE3NjNDMjcuMjE5MiAxMy43OTg3IDI3LjMzMjIgMTMuMjMwOSAyNy4xMjc5IDEyLjczNzVaIiBmaWxsPSIjOENENkZGIiBzdHJva2U9IiMxNDE2NDciLz4KPC9zdmc+Cg=="
+          alt=""
+        />
+      </figure>
+      <div class="section">
+        {{ lePerHour | number }}
+        Per hour
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img
+          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjkiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAyOSAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI3LjEyNzkgMTIuNzM3NUwyNy4xMjc4IDEyLjczNzRDMjYuOTIzNSAxMi4yNDQxIDI2LjQ0MiAxMS45MjI0IDI1LjkwODEgMTEuOTIyNEgxNy43ODE5TDE5LjMwNTIgMi4wMjExMUwxOS4zMDUyIDIuMDIxMDlDMTkuMzkyIDEuNDU2ODEgMTkuMTA2MiAwLjkwMDcwNSAxOC41OTcxIDAuNjQyNjMzTDE4LjM3MSAxLjA4ODYyTDE4LjU5NzEgMC42NDI2MzNDMTguMDg3NiAwLjM4NDQzNiAxNy40NzAyIDAuNDgzMTY2IDE3LjA2NjYgMC44ODY3NzJMMi4xMjk2NSAxNS44MjM3TDIuNDgzMjEgMTYuMTc3MkwyLjEyOTY1IDE1LjgyMzdDMS43NTIwMyAxNi4yMDEzIDEuNjM5MTMgMTYuNzY5MiAxLjg0MzQgMTcuMjYyNUwxLjg0MzQzIDE3LjI2MjZDMi4wNDc4IDE3Ljc1NTkgMi41MjkyMyAxOC4wNzc2IDMuMDYzMjIgMTguMDc3NkgxMS4xODkzTDkuNjY2MDUgMjcuOTc4OUw5LjY2NjA1IDI3Ljk3ODlDOS41NzkyNiAyOC41NDMyIDkuODY0OTcgMjkuMDk5MyAxMC4zNzQyIDI5LjM1NzRDMTAuODgzNiAyOS42MTU2IDExLjUwMSAyOS41MTY4IDExLjkwNDYgMjkuMTEzMkwyNi44NDE2IDE0LjE3NjNDMjcuMjE5MiAxMy43OTg3IDI3LjMzMjIgMTMuMjMwOSAyNy4xMjc5IDEyLjczNzVaIiBmaWxsPSIjOENENkZGIiBzdHJva2U9IiMxNDE2NDciLz4KPC9zdmc+Cg=="
+          alt=""
+        />
+      </figure>
+      <div class="section">
+        {{ getLEPerDay() | number }}
+        Per Day
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img
+          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjkiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAyOSAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI3LjEyNzkgMTIuNzM3NUwyNy4xMjc4IDEyLjczNzRDMjYuOTIzNSAxMi4yNDQxIDI2LjQ0MiAxMS45MjI0IDI1LjkwODEgMTEuOTIyNEgxNy43ODE5TDE5LjMwNTIgMi4wMjExMUwxOS4zMDUyIDIuMDIxMDlDMTkuMzkyIDEuNDU2ODEgMTkuMTA2MiAwLjkwMDcwNSAxOC41OTcxIDAuNjQyNjMzTDE4LjM3MSAxLjA4ODYyTDE4LjU5NzEgMC42NDI2MzNDMTguMDg3NiAwLjM4NDQzNiAxNy40NzAyIDAuNDgzMTY2IDE3LjA2NjYgMC44ODY3NzJMMi4xMjk2NSAxNS44MjM3TDIuNDgzMjEgMTYuMTc3MkwyLjEyOTY1IDE1LjgyMzdDMS43NTIwMyAxNi4yMDEzIDEuNjM5MTMgMTYuNzY5MiAxLjg0MzQgMTcuMjYyNUwxLjg0MzQzIDE3LjI2MjZDMi4wNDc4IDE3Ljc1NTkgMi41MjkyMyAxOC4wNzc2IDMuMDYzMjIgMTguMDc3NkgxMS4xODkzTDkuNjY2MDUgMjcuOTc4OUw5LjY2NjA1IDI3Ljk3ODlDOS41NzkyNiAyOC41NDMyIDkuODY0OTcgMjkuMDk5MyAxMC4zNzQyIDI5LjM1NzRDMTAuODgzNiAyOS42MTU2IDExLjUwMSAyOS41MTY4IDExLjkwNDYgMjkuMTEzMkwyNi44NDE2IDE0LjE3NjNDMjcuMjE5MiAxMy43OTg3IDI3LjMzMjIgMTMuMjMwOSAyNy4xMjc5IDEyLjczNzVaIiBmaWxsPSIjOENENkZGIiBzdHJva2U9IiMxNDE2NDciLz4KPC9zdmc+Cg=="
+          alt=""
+        />
+      </figure>
+      <div class="section">
+        {{ getLEPerWeek() | number }}
+        Per Week
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img
+          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjkiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAyOSAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI3LjEyNzkgMTIuNzM3NUwyNy4xMjc4IDEyLjczNzRDMjYuOTIzNSAxMi4yNDQxIDI2LjQ0MiAxMS45MjI0IDI1LjkwODEgMTEuOTIyNEgxNy43ODE5TDE5LjMwNTIgMi4wMjExMUwxOS4zMDUyIDIuMDIxMDlDMTkuMzkyIDEuNDU2ODEgMTkuMTA2MiAwLjkwMDcwNSAxOC41OTcxIDAuNjQyNjMzTDE4LjM3MSAxLjA4ODYyTDE4LjU5NzEgMC42NDI2MzNDMTguMDg3NiAwLjM4NDQzNiAxNy40NzAyIDAuNDgzMTY2IDE3LjA2NjYgMC44ODY3NzJMMi4xMjk2NSAxNS44MjM3TDIuNDgzMjEgMTYuMTc3MkwyLjEyOTY1IDE1LjgyMzdDMS43NTIwMyAxNi4yMDEzIDEuNjM5MTMgMTYuNzY5MiAxLjg0MzQgMTcuMjYyNUwxLjg0MzQzIDE3LjI2MjZDMi4wNDc4IDE3Ljc1NTkgMi41MjkyMyAxOC4wNzc2IDMuMDYzMjIgMTguMDc3NkgxMS4xODkzTDkuNjY2MDUgMjcuOTc4OUw5LjY2NjA1IDI3Ljk3ODlDOS41NzkyNiAyOC41NDMyIDkuODY0OTcgMjkuMDk5MyAxMC4zNzQyIDI5LjM1NzRDMTAuODgzNiAyOS42MTU2IDExLjUwMSAyOS41MTY4IDExLjkwNDYgMjkuMTEzMkwyNi44NDE2IDE0LjE3NjNDMjcuMjE5MiAxMy43OTg3IDI3LjMzMjIgMTMuMjMwOSAyNy4xMjc5IDEyLjczNzVaIiBmaWxsPSIjOENENkZGIiBzdHJva2U9IiMxNDE2NDciLz4KPC9zdmc+Cg=="
+          alt=""
+        />
+      </figure>
+      <div class="section">
+        {{ getLEPerMonth() | number }}
+        Per Month
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="le-section" *ngIf="lePerHour > 0">
+  <h1>PVU</h1>
+  <p>With 5% tax</p>
+  <p>at a change ratio 150 LE = 1 PVU</p>
+  <div class="le-cards">
+    <div class="card">
+      <figure>
+        <img
+          src="https://marketplace.plantvsundead.com/_nuxt/img/pvu-icon.fa9e648.svg"
+          alt=""
+        />
+      </figure>
+      <div class="section">
+        {{ getPVUPerHour() | number }}
+        Per hour
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img
+          src="https://marketplace.plantvsundead.com/_nuxt/img/pvu-icon.fa9e648.svg"
+          alt=""
+        />
+      </figure>
+      <div class="section">
+        {{ getPVUPerDay() | number }}
+        Per Day
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img
+          src="https://marketplace.plantvsundead.com/_nuxt/img/pvu-icon.fa9e648.svg"
+          alt=""
+        />
+      </figure>
+      <div class="section">
+        {{ getPVUPerWeek() | number }}
+        Per Week
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img
+          src="https://marketplace.plantvsundead.com/_nuxt/img/pvu-icon.fa9e648.svg"
+          alt=""
+        />
+      </figure>
+      <div class="section">
+        {{ getPVUPerMonth() | number }}
+        Per Month
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="le-section" *ngIf="lePerHour > 0">
+  <h1>Dollar</h1>
+  <p>at a change ratio 1 PVU = {{ pvuPrice | number }} Dollars</p>
+  <div class="le-cards">
+    <div class="card">
+      <figure>
+        <img src="https://img.icons8.com/color/96/000000/usa-circular.png" />
+      </figure>
+      <div class="section">
+        {{ getDollarPerHour() | number }}
+        Per hour
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img src="https://img.icons8.com/color/96/000000/usa-circular.png" />
+      </figure>
+      <div class="section">
+        {{ getDollarPerDay() | number }}
+        Per Day
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img src="https://img.icons8.com/color/96/000000/usa-circular.png" />
+      </figure>
+      <div class="section">
+        {{ getDollarPerWeek() | number }}
+        Per Week
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img src="https://img.icons8.com/color/96/000000/usa-circular.png" />
+      </figure>
+      <div class="section">
+        {{ getDollarPerMonth() | number }}
+        Per Month
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="le-section" *ngIf="lePerHour > 0">
+  <h1>Mexican Pesos</h1>
+  <p>at a change ratio 1 Dollar = {{ dollarPrice | number }} Pesos</p>
+  <div class="le-cards">
+    <div class="card">
+      <figure>
+        <img src="https://img.icons8.com/color/48/000000/mexico-circular.png" />
+      </figure>
+      <div class="section">
+        {{ getPesosPerHour() | number }}
+        Per hour
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img src="https://img.icons8.com/color/48/000000/mexico-circular.png" />
+      </figure>
+      <div class="section">
+        {{ getPesosPerDay() | number }}
+        Per Day
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img src="https://img.icons8.com/color/48/000000/mexico-circular.png" />
+      </figure>
+      <div class="section">
+        {{ getPesosPerWeek() | number }}
+        Per Week
+      </div>
+    </div>
+    <div class="card">
+      <figure>
+        <img src="https://img.icons8.com/color/48/000000/mexico-circular.png" />
+      </figure>
+      <div class="section">
+        {{ getPesosPerMonth() | number }}
+        Per Month
+      </div>
+    </div>
+  </div>
+</div>

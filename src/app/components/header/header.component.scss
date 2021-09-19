@@ -1,0 +1,29 @@
+.header {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  background-color: black;
+  color: white;
+
+  ul {
+    list-style-type: none;
+    padding: 0 20px;
+    li {
+      a {
+        text-decoration: none;
+        color: #6a748e;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
