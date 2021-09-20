@@ -113,7 +113,8 @@ export class CalculatorComponent implements OnInit {
 
   getDollarPrice() {
     this.dataService.getDolarPrice().subscribe((res: any) => {
-      this.dollarPrice = res.priceInMexicanPesos;
+      this.dollarPrice = res.priceInMexicanPesos ? res.priceInMexicanPesos : 20;
+      console.log(this.dollarPrice);
     });
   }
 
