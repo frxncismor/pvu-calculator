@@ -86,7 +86,6 @@ export class CalculatorComponent implements OnInit {
   getPVUPrice() {
     this.dataService.getPVUPrice().subscribe((res: any) => {
       this.pvuPrice = res.data.price;
-      console.log(this.pvuPrice);
       return this.pvuPrice;
     });
   }
@@ -112,10 +111,15 @@ export class CalculatorComponent implements OnInit {
   }
 
   getDollarPrice() {
-    this.dataService.getDolarPrice().subscribe((res: any) => {
-      this.dollarPrice = res.priceInMexicanPesos ? res.priceInMexicanPesos : 20;
-      console.log(this.dollarPrice);
-    });
+    this.dataService.getDolarPrice().subscribe(
+      (res: any) => {
+        this.dollarPrice = res.payload.vwap;
+      },
+      (error) => {
+        console.log(error);
+        this.dollarPrice = 20;
+      }
+    );
   }
 
   getPesosPerHour() {

@@ -8,7 +8,7 @@ export class DataService {
   API =
     'https://api.pancakeswap.info/api/v2/tokens/0x31471E0791fCdbE82fbF4C44943255e923F1b794';
 
-  MexoAPI = 'https://api.mexo.io/openapi/quote/v1/ticker/price?symbol=USDTMMXN';
+  BitsoAPI = 'https://bitso-api-v3.herokuapp.com/api/ticker?book=tusd_mxn';
 
   constructor(private http: HttpClient) {}
 
@@ -17,8 +17,6 @@ export class DataService {
   }
 
   getDolarPrice() {
-    return this.http.get(this.MexoAPI, {
-      headers: new HttpHeaders().set('Access-Control-Allow-Origin', '*'),
-    });
+    return this.http.get(this.BitsoAPI);
   }
 }
