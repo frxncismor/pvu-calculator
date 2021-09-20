@@ -1,0 +1,25 @@
+<form action="">
+  <div class="wrapper">
+    <div class="input">
+      <label for="le">PVU</label>
+      <input id="le" type="number" name="pvu" [(ngModel)]="pvu" />
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit" (click)="getLeNeeded(pvu)">
+    How many LE do I need?
+  </button>
+</form>
+
+<div class="le-section" *ngIf="leNeeded > 0">
+  <div class="le-cards">
+    <div class="card">
+      <figure>
+        <img
+          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjkiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAyOSAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI3LjEyNzkgMTIuNzM3NUwyNy4xMjc4IDEyLjczNzRDMjYuOTIzNSAxMi4yNDQxIDI2LjQ0MiAxMS45MjI0IDI1LjkwODEgMTEuOTIyNEgxNy43ODE5TDE5LjMwNTIgMi4wMjExMUwxOS4zMDUyIDIuMDIxMDlDMTkuMzkyIDEuNDU2ODEgMTkuMTA2MiAwLjkwMDcwNSAxOC41OTcxIDAuNjQyNjMzTDE4LjM3MSAxLjA4ODYyTDE4LjU5NzEgMC42NDI2MzNDMTguMDg3NiAwLjM4NDQzNiAxNy40NzAyIDAuNDgzMTY2IDE3LjA2NjYgMC44ODY3NzJMMi4xMjk2NSAxNS44MjM3TDIuNDgzMjEgMTYuMTc3MkwyLjEyOTY1IDE1LjgyMzdDMS43NTIwMyAxNi4yMDEzIDEuNjM5MTMgMTYuNzY5MiAxLjg0MzQgMTcuMjYyNUwxLjg0MzQzIDE3LjI2MjZDMi4wNDc4IDE3Ljc1NTkgMi41MjkyMyAxOC4wNzc2IDMuMDYzMjIgMTguMDc3NkgxMS4xODkzTDkuNjY2MDUgMjcuOTc4OUw5LjY2NjA1IDI3Ljk3ODlDOS41NzkyNiAyOC41NDMyIDkuODY0OTcgMjkuMDk5MyAxMC4zNzQyIDI5LjM1NzRDMTAuODgzNiAyOS42MTU2IDExLjUwMSAyOS41MTY4IDExLjkwNDYgMjkuMTEzMkwyNi44NDE2IDE0LjE3NjNDMjcuMjE5MiAxMy43OTg3IDI3LjMzMjIgMTMuMjMwOSAyNy4xMjc5IDEyLjczNzVaIiBmaWxsPSIjOENENkZGIiBzdHJva2U9IiMxNDE2NDciLz4KPC9zdmc+Cg=="
+          alt=""
+        />
+      </figure>
+      <div class="section">You need {{ leNeeded | number: "1.0-0" }}</div>
+    </div>
+  </div>
+</div>

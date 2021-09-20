@@ -17,7 +17,10 @@
   ul {
     list-style-type: none;
     padding: 0 20px;
+    display: flex;
+    justify-content: space-around;
     li {
+      margin: 0 12px;
       a {
         text-decoration: none;
         color: #6a748e;

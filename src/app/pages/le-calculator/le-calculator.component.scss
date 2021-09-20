@@ -1,0 +1,57 @@
+form {
+  width: 500px;
+  min-width: 400px;
+  width: 100%;
+  height: 150px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .input {
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+
+    input {
+      width: 50px;
+    }
+
+    label {
+      margin-right: 10px;
+    }
+  }
+
+  p {
+    margin: 0 10px;
+  }
+}
+
+.le-section {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1536px;
+  min-width: 400px;
+  display: flex;
+  justify-content: center;
+
+  h1 {
+    font-size: 19pt;
+  }
+
+  .le-cards {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+  }
+}

@@ -11,6 +11,17 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'calculator',
+    redirectTo: '',
+  },
+  {
+    path: 'le-calculator',
+    loadChildren: () =>
+      import('./pages/le-calculator/le-calculator.module').then(
+        (m) => m.LeCalculatorModule
+      ),
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   },
