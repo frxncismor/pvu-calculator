@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/core/services/data.service';
 
 @Component({
   selector: 'app-le-calculator',
@@ -8,13 +9,29 @@ import { Component, OnInit } from '@angular/core';
 export class LeCalculatorComponent implements OnInit {
   pvu: any;
   leNeeded: any;
-  constructor() {}
+  dollarPrice: any;
+  dollarNeeded: any;
 
-  ngOnInit(): void {}
+  constructor(private dataService: DataService) {}
+
+  ngOnInit(): void {
+    this.getPVUPrice();
+  }
 
   getLeNeeded(pvu): any {
     this.leNeeded = (150 * pvu) / 0.95 + 1;
     console.log(this.leNeeded);
     return this.leNeeded;
+  }
+
+  getPVUPrice(): any {
+    this.dataService.getPVUPrice().subscribe((res: any) => {
+      console.log(res);
+      this.dollarPrice = res.data.price;
+    });
+  }
+
+  getDollarNeeded(): any {
+    return (this.dollarNeeded = this.dollarPrice * this.pvu);
   }
 }

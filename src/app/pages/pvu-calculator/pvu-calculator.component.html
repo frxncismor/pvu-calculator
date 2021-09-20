@@ -9,9 +9,10 @@
 
 <form action="">
   <div class="wrapper">
+    <p>I have</p>
     <div class="input">
-      <label for="le">LE</label>
       <input id="le" type="number" name="le" [(ngModel)]="le" />
+      <label for="le">LE</label>
     </div>
   </div>
   <button class="btn btn-primary" type="submit" (click)="getPVU(le)">
@@ -22,8 +23,6 @@
 <div class="le-section" *ngIf="pvu > 0">
   <div class="le-cards">
     <div class="card">
-      <p>5% tax fee included</p>
-      <p>at a exhange ratio 150 LE = 1 PVU</p>
       <figure>
         <img
           src="https://marketplace.plantvsundead.com/_nuxt/img/pvu-icon.fa9e648.svg"
@@ -31,6 +30,18 @@
         />
       </figure>
       <p class="section">You have {{ pvu | number }} PVU</p>
+      <p class="section smaller">at a exhange ratio 150 LE = 1 PVU</p>
+      <p class="section smaller">5% tax fee included</p>
+    </div>
+    <p class="or">or</p>
+    <div class="card">
+      <figure>
+        <img src="https://img.icons8.com/color/96/000000/usa-circular.png" />
+      </figure>
+      <p class="section">You have {{ getDollars() | number }} Dollars</p>
+      <p class="section smaller">
+        at exchange ratio 1 PVU = {{ dollarPrice | number }} Dollar
+      </p>
     </div>
   </div>
 </div>
