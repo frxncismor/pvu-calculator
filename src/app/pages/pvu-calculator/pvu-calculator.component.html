@@ -1,0 +1,27 @@
+<form action="">
+  <div class="wrapper">
+    <div class="input">
+      <label for="le">LE</label>
+      <input id="le" type="number" name="le" [(ngModel)]="le" />
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit" (click)="getPVU(le)">
+    How many PVU do I have?
+  </button>
+</form>
+
+<div class="le-section" *ngIf="pvu > 0">
+  <div class="le-cards">
+    <div class="card">
+      <p>5% tax fee included</p>
+      <p>at a exhange ratio 150 LE = 1 PVU</p>
+      <figure>
+        <img
+          src="https://marketplace.plantvsundead.com/_nuxt/img/pvu-icon.fa9e648.svg"
+          alt=""
+        />
+      </figure>
+      <p class="section">You have {{ pvu | number }} PVU</p>
+    </div>
+  </div>
+</div>

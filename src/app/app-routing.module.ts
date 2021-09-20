@@ -22,6 +22,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'pvu-calculator',
+    loadChildren: () =>
+      import('./pages/pvu-calculator/pvu-calculator.module').then(
+        (m) => m.PvuCalculatorModule
+      ),
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   },
