@@ -1,0 +1,73 @@
+.section {
+  width: 100%;
+  height: 300px;
+  background-color: #151721;
+  border: gray 1px solid;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  .plant-section {
+    width: 100%;
+    border-right: gray 1px solid;
+    display: grid;
+    grid-template-rows: 30% 70%;
+
+    h1 {
+      text-align: center;
+    }
+
+    .plants {
+      border-top: gray 1px solid;
+      overflow: auto;
+      max-height: 100%;
+      display: flex;
+      align-items: center;
+
+      .card {
+        display: grid;
+        grid-template-columns: 24% 76%;
+        border: gray 1px solid;
+        max-width: 250px;
+        max-height: 100px;
+        min-width: 250px;
+        margin-right: 8px;
+
+        figure {
+          width: 60px;
+          border-right: gray 1px solid;
+          height: 100%;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            max-width: 100%;
+          }
+        }
+
+        .info {
+          display: grid;
+          grid-template-rows: 70% 30%;
+
+          p {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  .time-section {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 30% 70%;
+
+    h1 {
+      text-align: center;
+    }
+
+    .times {
+      border-top: gray 1px solid;
+    }
+  }
+}

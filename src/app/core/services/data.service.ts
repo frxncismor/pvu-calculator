@@ -19,4 +19,8 @@ export class DataService {
   getDolarPrice() {
     return this.http.get(this.BitsoAPI);
   }
+
+  getLEPrice() {
+    return this.http.get('assets/le.json');
+  }
 }

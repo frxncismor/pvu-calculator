@@ -34,13 +34,14 @@ export class CalculatorComponent implements OnInit {
 
   pvuPrice: any;
   dollarPrice: any;
-  leToPvuRatio: any = 150;
+  leToPvuRatio: any;
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.getPVUPrice();
     this.getDollarPrice();
+    this.getLEPrice();
   }
 
   getLePerHour(le, hours): any {
@@ -140,5 +141,12 @@ export class CalculatorComponent implements OnInit {
   getPesosPerMonth() {
     this.pesosPerMonth = this.dollarPerMonth * this.dollarPrice;
     return this.pesosPerMonth;
+  }
+
+  getLEPrice(): any {
+    return this.dataService.getLEPrice().subscribe((res: any) => {
+      this.leToPvuRatio = res.price;
+      console.log(this.leToPvuRatio);
+    });
   }
 }

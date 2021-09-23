@@ -11,15 +11,17 @@ export class PvuCalculatorComponent implements OnInit {
   pvu: any;
   dollarPrice: any;
   pvuToDollar: any;
+  exhangeRatioLE: any;
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.getPVUPrice();
+    this.getLEPrice();
   }
 
   getPVU(le): any {
-    this.pvu = (le * 0.95) / 150;
+    this.pvu = (le * 0.95) / this.exhangeRatioLE;
     return this.pvu;
   }
 
@@ -32,5 +34,12 @@ export class PvuCalculatorComponent implements OnInit {
 
   getDollars(): any {
     return (this.pvuToDollar = this.dollarPrice * this.pvu);
+  }
+
+  getLEPrice(): any {
+    return this.dataService.getLEPrice().subscribe((res: any) => {
+      this.exhangeRatioLE = res.price;
+      console.log(this.exhangeRatioLE);
+    });
   }
 }

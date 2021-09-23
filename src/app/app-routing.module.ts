@@ -29,6 +29,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'garden-calculator',
+    loadChildren: () =>
+      import('./pages/garden-calculator/garden-calculator.module').then(
+        (m) => m.GardenCalculatorModule
+      ),
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   },

@@ -11,15 +11,17 @@ export class LeCalculatorComponent implements OnInit {
   leNeeded: any;
   dollarPrice: any;
   dollarNeeded: any;
+  exhangeRatioLE: any;
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.getPVUPrice();
+    this.getLEPrice();
   }
 
   getLeNeeded(pvu): any {
-    this.leNeeded = (150 * pvu) / 0.95 + 1;
+    this.leNeeded = (this.exhangeRatioLE * pvu) / 0.95 + 1;
     console.log(this.leNeeded);
     return this.leNeeded;
   }
@@ -33,5 +35,12 @@ export class LeCalculatorComponent implements OnInit {
 
   getDollarNeeded(): any {
     return (this.dollarNeeded = this.dollarPrice * this.pvu);
+  }
+
+  getLEPrice(): any {
+    return this.dataService.getLEPrice().subscribe((res: any) => {
+      this.exhangeRatioLE = res.price;
+      console.log(this.exhangeRatioLE);
+    });
   }
 }
